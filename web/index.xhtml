@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:param name="título" value="Multiplicacion"/>
+    <h:head>
+        <meta charset="UTF-8"/>
+        <title>#{título}</title>
+        <meta name="viewport" content="width=device-width"/>
+    </h:head>
+    <h:body>
+        <h1>#{título}</h1>
+        <h:form prependId="false">
+            <h:messages globalOnly="true"/>
+            <p>
+                <h:inputText id="numero1" p:placeholder="Numero 1" required="true"
+                             requiredMessage="Ingrese un numero entero"
+                             value="#{referencia.numero1}"
+                             size="4" 
+                             onkeypress="return soloNumeros(event)"/>
+                
+                <h:message for="numero1"/>
+            </p>
+            <p>
+                <h:inputText id="numero2" p:placeholder="Numero 2" required="true"
+                             requiredMessage="Ingrese un numero entero"
+                             value="#{referencia.numero2}"
+                             size="4" 
+                             onkeypress="return soloNumeros(event)"/>
+                
+                <h:message for="numero2"/>
+            </p>
+            <p>
+                <h:commandButton value="Multiplicar" action="#{referencia.impMultiplicacion()}"/>
+            </p>
+            <script type="text/javascript">
+                function soloNumeros(e)
+                {
+                    var keynum = window.event ? window.event.keyCode : e.which;
+                    if ((keynum == 8) || (keynum == 46))
+                        return true;
+                    return /\d/.test(String.fromCharCode(keynum));
+                }
+            </script>
+        </h:form>
+        <footer>Copyright © 2019 Roberto Muciño Vela</footer>
+    </h:body>
+</html>
+
